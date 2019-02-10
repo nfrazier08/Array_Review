@@ -46,22 +46,48 @@ const people = ['Obama, Michelle', 'Mai, Ella', 'Winfrey, Oprah', 'Dufu, Tiffany
     console.table(ordered);
 
     // Array.prototype.reduce()
-    // 4. How many years did all the inventors live?
+    // 4. How many years did all the artists live?
     const artists = [
         {first: 'Joan', last: 'Mitchell', born: 1925, died: 1992},
-        {first: 'Georgia', last: 'O\'Keefe', born: 1887, died:1986}, 
+        {first: 'Georgia', last: 'O\'Keefe', born: 1887, died: 1986}, 
         {first: 'Elizabeth', last: 'Catlett', born: 1915, died: 2012}, 
         {first: 'Purvis', last: 'Young', born: 1943, died: 2010}
     ];
 
-    
+    const totalYears = artists.reduce((total, artist) => {
+        return total + (artist.died - artist.born);
+    }, 0);
+
+    console.log(totalYears); //Here we are returned 330; which is the total number of year together all the artists lived
 
 
-    // 5. Sort the inventors by years lived
+    // 5. Sort the artists by years lived
+    const oldest = artists.sort(function(a,b){
+        const lastArtist = a.died - a.born;
+        const nextArtist = b.died - b.born;
 
+        return lastArtist > nextArtist ? -1:1
+        
+    });
+
+    console.table(oldest);
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+
+    //We first need to DOM elements out of page
+    const category = document.querySelector('.mw-category');
+
+    //We need to change this into an array, because this returns a nodeList- which doesn't include the map function
+    //const links = category.querySelectorAll('a');
+
+    const links = [...category.querySelectorAll('a')];
+
+    //This should give us the name of the BLVD. While my 'links' returns data, I continue to get undefined here
+    const de = links
+                .map(link => a.textContext)
+                .filter(streetName => streetName.includes('de'));
+
 
 
     // 7. sort Exercise
