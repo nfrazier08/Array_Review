@@ -106,6 +106,17 @@ const people = ['Obama, Michelle', 'Mai, Ella', 'Winfrey, Oprah', 'Dufu, Tiffany
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
-    const medium = ['book', 'essay', 'article', 'video', 'book', 'essay', 'essay', 'book', 'video', 'article', 'article', 'book', 'book'];
+    const medium = ['book', 'essay', 'article', 'video', 'book', 'essay', 'essay', 'book', 'video', 'article', 'article', 'book', 'book' ,'podcast'];
+
+    const content = medium.reduce((obj, item) => {
+        if(!obj[item]){
+            obj[item] = 0
+        }
+        obj[item]++
+        return obj;
+    }, {});
+
+    console.log(content);
+
 
 };
