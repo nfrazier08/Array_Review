@@ -69,30 +69,40 @@ const people = ['Obama, Michelle', 'Mai, Ella', 'Winfrey, Oprah', 'Dufu, Tiffany
         return lastArtist > nextArtist ? -1:1
         
     });
-
+    
+    console.log("here is oldest...")
     console.table(oldest);
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
     //We first need to DOM elements out of page
-    const category = document.querySelector('.mw-category');
+    //const category = document.querySelector('.mw-category');
 
     //We need to change this into an array, because this returns a nodeList- which doesn't include the map function
     //const links = category.querySelectorAll('a');
 
-    const links = [...category.querySelectorAll('a')];
+    //const links = [...category.querySelectorAll('a')];
 
     //This should give us the name of the BLVD. While my 'links' returns data, I continue to get undefined here
-    const de = links
-                .map(link => a.textContext)
-                .filter(streetName => streetName.includes('de'));
+    //const de = links
+               //.map(link => a.textContext)
+                //.filter(streetName => streetName.includes('de'));
 
-
+    const politicians = ['Pelosi, Nancy', 'Clinton, Hilary', 'Pressley, Ayanna','Harris, Kamala', 'Ocasio-Cortes, Alexandria', 'Omar, Ilhan', 'Underwood, Lauren']
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    const alpha = politicians.sort((lastOne, nextOne) => {
+        const [aLast, aFirst] = lastOne.split(', ');
+        const [bLast, bFirst] = nextOne.split(', ');
 
+        return aLast > bFirst ? 1 : -1;
+        //console.log(lastOne)
+    });
+
+    console.log("Alpha is here...");
+    console.log(alpha);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
